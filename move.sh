@@ -26,7 +26,7 @@ for i in {0..3}
                 NUM=$(ls | grep $claveActual | wc -l);
                 echo $NUM; #Muestra el numero de archivos que coinciden con lo buscado
 
-                if [ $(ls | grep $claveActual | wc -l) = 0 ];
+                if [ $NUM = 0 ];
                         then 
                                 echo No hay archivos para mover;
                         else
