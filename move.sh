@@ -30,10 +30,10 @@ for i in {0..3}
                         then 
                                 echo No hay archivos para mover;
                         else
-                        		cd "$ARCHIVO"
-	        					video=$(ls | grep .mkv);
-	        					periscope -l es $video;
-	        					cd ..;
+                                cd "$ARCHIVO"
+                                video=$(ls | grep .mkv);
+                                periscope -l es $video;
+                                cd ..;
                                 mv "$ARCHIVO" "/media/fd5b5a96-f03b-46b9-94be-a04ce971d3a7/torrent/finish/Series/$carpetaActual/";
                                 echo Movido correctamente el archivo: "$ARCHIVO";
                 fi
