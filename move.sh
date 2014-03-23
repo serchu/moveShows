@@ -4,7 +4,9 @@
 downloadPath=/media/fd5b5a96-f03b-46b9-94be-a04ce971d3a7/torrent/finish/;
 cd $downloadPath;
 chmod 777 *
+echo "--------------------------------------"
 echo "Permisos dados a los archivos de la carpeta descargas";
+echo "--------------------------------------"
 echo "--------------------------------------"
 
 #Mover el archivo a la carpeta correspondiente:
