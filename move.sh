@@ -11,10 +11,10 @@ echo "--------------------------------------"
 
 #Mover el archivo a la carpeta correspondiente:
 #TODO: Bucle para que mueva todos los archivos buscados y no sólo uno
-carpetas=("The Big Bang Theory" "How I Met Your Mother" "Sherlock" "The Walking Dead");
-claves=("Big.Bang" "How.I.Met" "Sherlock" "The.Walking.Dead");
+carpetas=("The Big Bang Theory" "How I Met Your Mother" "Sherlock" "The Walking Dead","Fargo");
+claves=("Big.Bang" "How.I.Met" "Sherlock" "The.Walking.Dead","Fargo");
 
-for i in {0..3}
+for i in {0..4}
         do
                 claveActual=${claves[i]};
                 carpetaActual=${carpetas[i]};
