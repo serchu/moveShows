@@ -11,8 +11,8 @@ echo "--------------------------------------"
 
 #Mover el archivo a la carpeta correspondiente:
 #TODO: Bucle para que mueva todos los archivos buscados y no sólo uno
-carpetas=("The Big Bang Theory" "Sherlock" "The Walking Dead","Fargo","Game of Thrones");
-claves=("Big.Bang" "Sherlock" "The.Walking.Dead","Fargo","Game.of.Thrones");
+carpetas=("The Big Bang Theory" "Sherlock" "The Walking Dead" "Fargo" "Game of Thrones");
+claves=("Big.Bang" "Sherlock" "The.Walking.Dead" "Fargo" "Game.of.Thrones");
 
 for i in {0..4}
         do
