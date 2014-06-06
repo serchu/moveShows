@@ -13,7 +13,7 @@ echo "--------------------------------------"
 
 #Move the episodes from the downloads directory to the appropiate folder:
 
-tvShowsList=$(cat shows.txt)
+tvShowsList=$(cat $downloadsPath/shows.txt)
 
 for show in $tvShowsList; do
         claveAsociada=HELLO
@@ -24,9 +24,9 @@ for show in $tvShowsList; do
         numCaps=$(ls $downloadsPath | grep $claveAsociada | wc -l)
         echo $numCaps
         case $numCaps in
-                0 ) echo "There's no episodes for $show" ;;
+                0) echo "There's no episodes for $show" ;;
 
-                1 ) echo "There's 1 episode for $show"
+                1) echo "There's 1 episode for $show"
                         #TODO: Mirar si lo enontrado es archivo o carpeta, pues a veces va con carpeta y otras el archivo de video suelto
                         # En caso de encontrar un archivo mover directamente y luego buscar subtitulos
                         episode_folder=$(ls $downloadsPath | grep $claveAsociada)
@@ -38,7 +38,7 @@ for show in $tvShowsList; do
                         echo Moved episode succesfully: $episode_folder
                         ;;
 
-                * ) echo "There's 2 or more episodes for $show"
+                *) echo "There's 2 or more episodes for $show"
                         $episodes_list=$(ls $downloadsPath | grep $claveAsociada)
                         for episode in episodes_list; do
                                 video_file=$(ls $downloadsPath/$episode | grep .mkv)
