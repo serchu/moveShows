@@ -16,7 +16,7 @@ echo $(date +"%d/%m/%Y - %H:%M") "Script empieza a ejecutarse.." >> $downloadsPa
 tvShowsList=$(cat $downloadsPath/shows.txt)
 
 for show in $tvShowsList; do
-        claveAsociada=HELLO
+        claveAsociada=Fargo
         if [ ! -d $destinoPath/$show ]; then #TODO: Mirar si es correcto para ver si el directorio de la serie existe
                 mkdir $destinoPath/$show #Crear directorio destino de la serie si este no existe
         fi
@@ -54,3 +54,5 @@ for show in $tvShowsList; do
         esac
         echo "****************************************"
 done
+
+echo $(date +"%d/%m/%Y - %H:%M") "Script finaliza la ejecucion.." >> $downloadsPath/shows_log.txt
