@@ -12,12 +12,12 @@ echo "--------------------------------------"
 echo "****************************************"
 
 #Move the episodes from the downloads directory to the appropiate folder:
-echo $(date +"%d/%m/%Y - %H:%M") "Script empieza a ejecutarse.." >> $downloadsPath/shows_log.txt
+echo $(date +"%d/%m/%Y - %H:%M") "Script starts.." >> $downloadsPath/shows_log.txt
 tvShowsList=$(cat $downloadsPath/shows.txt)
 
 for show in $tvShowsList; do
-        claveAsociada=Fargo
-        if [ ! -d $destinoPath/$show ]; then #TODO: Mirar si es correcto para ver si el directorio de la serie existe
+        claveAsociada= #TODO: Mirar como hacer para definir la clave de búusqueda
+        if [ ! -d $destinoPath/$show ]; then 
                 mkdir $destinoPath/$show #Crear directorio destino de la serie si este no existe
         fi
         echo "Searching episodes for $show ...."
@@ -36,7 +36,7 @@ for show in $tvShowsList; do
                         periscope -l es $downloadsPath/$episode_folder/$video_file
                         mv $downloadsPath/$episode_folder $destinoPath/$show
                         echo "Moved episode succesfully: $episode_folder"
-                        echo $(date +"%d/%m/%Y - %H:%M") " ->> Moved episode succesfully: $episode_folder" >> $downloadsPath/shows_log.txt
+                        echo $(date +"%d/%m/%Y - %H:%M") " ->> Episode $episode_folder moved succesfully" >> $downloadsPath/shows_log.txt
                         ;;
 
                 *) echo "There's 2 or more episodes for $show"
@@ -49,10 +49,10 @@ for show in $tvShowsList; do
                                 echo "----------------"
                         done
                         echo "Moved $numCaps episodes of $show "
-                        echo $(date +"%d/%m/%Y - %H:%M") " ->> Moved $numCaps episodes of $show" >> $downloadsPath/shows_log.txt
+                        echo $(date +"%d/%m/%Y - %H:%M") " ->> $numCaps episodes of $show moved succesfully" >> $downloadsPath/shows_log.txt
                         ;;
         esac
         echo "****************************************"
 done
 
-echo $(date +"%d/%m/%Y - %H:%M") "Script finaliza la ejecucion.." >> $downloadsPath/shows_log.txt
+echo $(date +"%d/%m/%Y - %H:%M") "Script ends.." >> $downloadsPath/shows_log.txt
