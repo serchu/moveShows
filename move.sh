@@ -16,7 +16,10 @@ echo "--------------------------------------"
 tvShowsList=$(cat shows.txt)
 
 for show in $tvShowsList; do
-        echo "Searching episodes for $show"
+        if [ find $destinoPath/$show -type d ]; then #TODO: Mirar si es correcto para ver si el directorio de la serie existe
+                mkdir $destinoPath/$show #Crear directorio destino de la serie si este no existe
+        fi
+        echo "Searching episodes for $show ...."
         numCaps=$(ls $downloadsPath | grep $claveAsociada | wc -l)
         echo $numCaps
         case $numCaps in
@@ -24,9 +27,12 @@ for show in $tvShowsList; do
 
                 1 ) echo "There's 1 episode for $show"
                         #TODO: Mirar si lo enontrado es archivo o carpeta, pues a veces va con carpeta y otras el archivo de video suelto
+                        # En caso de encontrar un archivo mover directamente y luego buscar subtitulos
                         episode_folder=$(ls $downloadsPath | grep $claveAsociada)
-                        video_file=$(ls $downloadsPath/$episode_folder | grep .mkv) #TODO: mirar archivo con mayor tamaño o alguna otra cosa para determinar el video
-                        periscope -l es $video_file
+                        #TODO: mirar archivo con mayor tamaño o alguna otra cosa para determinar el video, en vez de .mkv
+                        video_file=$(ls $downloadsPath/$episode_folder | grep .mkv) 
+                        echo "Searching subtitles for episode: $$video_file"
+                        periscope -l es $downloadsPath/$episode_folder/$video_file
                         mv $downloadsPath/$episode_folder $destinoPath/$show
                         echo Moved episode succesfully: $episode_folder
                         ;;
@@ -35,10 +41,13 @@ for show in $tvShowsList; do
                         $episodes_list=$(ls $downloadsPath | grep $claveAsociada)
                         for episode in episodes_list; do
                                 video_file=$(ls $downloadsPath/$episode | grep .mkv)
-                                periscope -l es $video_file
+                                periscope -l es $downloadsPath/$episode/$video_file
                                 mv $downloadsPath/$episode $destinoPath/$show
                                 echo Moved episode succesfully: $episode
+                                echo "----------------"
                         done
+                        echo "Moved $numCaps episodes of $show "
                         ;;
         esac
+        echo "****************************************"
 done
