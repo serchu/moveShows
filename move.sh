@@ -9,7 +9,7 @@ chmod 777 $downloadsPath/*
 echo "--------------------------------------"
 echo "Changed permissions to the episodes for moving them later";
 echo "--------------------------------------"
-echo "--------------------------------------"
+echo "****************************************"
 
 #Move the episodes from the downloads directory to the appropiate folder:
 
