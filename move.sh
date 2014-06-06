@@ -31,7 +31,7 @@ for show in $tvShowsList; do
                         episode_folder=$(ls $downloadsPath | grep $claveAsociada)
                         #TODO: mirar archivo con mayor tamaño o alguna otra cosa para determinar el video, en vez de .mkv
                         video_file=$(ls $downloadsPath/$episode_folder | grep .mkv) 
-                        echo "Searching subtitles for episode: $$video_file"
+                        echo "Searching subtitles for episode: $video_file"
                         periscope -l es $downloadsPath/$episode_folder/$video_file
                         mv $downloadsPath/$episode_folder $destinoPath/$show
                         echo Moved episode succesfully: $episode_folder
