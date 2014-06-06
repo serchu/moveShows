@@ -15,5 +15,6 @@ tvShowsList=$(cat shows.txt)
 
 for show in $tvShowsList; do
         echo "Searching episodes for $show"
-        
+        numCaps=$(ls | grep $claveAsociada | wc -l)
+        echo $numCaps
 done
