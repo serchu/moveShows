@@ -12,7 +12,7 @@ echo "--------------------------------------"
 echo "****************************************"
 
 #Move the episodes from the downloads directory to the appropiate folder:
-
+echo $(date +"%d/%m/%Y - %H:%M") "Script empieza a ejecutarse.." >> $downloadsPath/shows_log.txt
 tvShowsList=$(cat $downloadsPath/shows.txt)
 
 for show in $tvShowsList; do
@@ -35,7 +35,8 @@ for show in $tvShowsList; do
                         echo "Searching subtitles for episode: $video_file"
                         periscope -l es $downloadsPath/$episode_folder/$video_file
                         mv $downloadsPath/$episode_folder $destinoPath/$show
-                        echo Moved episode succesfully: $episode_folder
+                        echo "Moved episode succesfully: $episode_folder"
+                        echo $(date +"%d/%m/%Y - %H:%M") " ->> Moved episode succesfully: $episode_folder" >> $downloadsPath/shows_log.txt
                         ;;
 
                 *) echo "There's 2 or more episodes for $show"
@@ -48,6 +49,7 @@ for show in $tvShowsList; do
                                 echo "----------------"
                         done
                         echo "Moved $numCaps episodes of $show "
+                        echo $(date +"%d/%m/%Y - %H:%M") " ->> Moved $numCaps episodes of $show" >> $downloadsPath/shows_log.txt
                         ;;
         esac
         echo "****************************************"
