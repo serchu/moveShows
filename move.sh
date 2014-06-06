@@ -17,7 +17,7 @@ tvShowsList=$(cat $downloadsPath/shows.txt)
 
 for show in $tvShowsList; do
         claveAsociada=HELLO
-        if [ -d $destinoPath/$show ]; then #TODO: Mirar si es correcto para ver si el directorio de la serie existe
+        if [ ! -d $destinoPath/$show ]; then #TODO: Mirar si es correcto para ver si el directorio de la serie existe
                 mkdir $destinoPath/$show #Crear directorio destino de la serie si este no existe
         fi
         echo "Searching episodes for $show ...."
