@@ -10,7 +10,7 @@ destinoPath=/media/fd5b5a96-f03b-46b9-94be-a04ce971d3a7/torrent/finish/Series
 function moveEpisode { # $1 - Name of the Show
         
         resul=$1
-
+        echo $resul
         if [ ! -d $downloadsPath/$resul ]; 
                 then
                         # If it's not directory... Create a directory named as the episode but without the extension of the video
