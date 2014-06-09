@@ -47,7 +47,7 @@ echo "****************************************"
 echo $(date +"%d/%m/%Y - %H:%M") "Script starts.." >> $downloadsPath/shows_log.txt
 
 while read show ; do
-        claveShow=$(echo show | tr " " .)
+        claveShow=$(echo $show | tr " " .)
         echo $claveShow
         if [ ! -d $destinoPath/$show ]; then 
                 mkdir $destinoPath/$show #Crear directorio destino de la serie si este no existe
