@@ -14,7 +14,7 @@ function moveEpisode { # $1 - Name of the Show
         if [ ! -d $downloadsPath/$resul ]; 
                 then
                         # If it's not directory... Create a directory named as the episode but without the extension of the video
-                        episode_folder=$(echo $resul | cat -d '.' -f1) # Delete the extension of the video file
+                        episode_folder=$(echo $resul | cut -d '.' f1) # Delete the extension of the video file
                         mkdir $downloadsPath/$episode_folder # Create the folder for the episode
                         mv $downloadsPath/$episode $downloadsPath/$episode_folder # Move the episode to that folder
                 else    
