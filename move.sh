@@ -9,7 +9,7 @@ destinoPath=/media/fd5b5a96-f03b-46b9-94be-a04ce971d3a7/torrent/finish/Series
 
 function moveEpisode { # $1 - Name of the Show
         
-        resul = $1
+        resul=$1
 
         if [ !-d $downloadsPath/$resul ]; 
                 then
@@ -49,7 +49,7 @@ echo $(date +"%d/%m/%Y - %H:%M") "Script starts.." >> $downloadsPath/shows_log.t
 while read show ; do
         claveShow=$(echo $show | tr " " .)
         echo $claveShow
-        if [ ! -d $destinoPath/$show ]; then 
+        if [ !-d $destinoPath/$show ]; then 
                 mkdir $destinoPath/$show #Crear directorio destino de la serie si este no existe
         fi
         echo "Searching episodes for $show ...."
