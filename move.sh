@@ -11,7 +11,7 @@ function moveEpisode { # $1 - Name of the Show
         
         resul=$1
 
-        if [ !-d $downloadsPath/$resul ]; 
+        if [ ! -d $downloadsPath/$resul ]; 
                 then
                         # If it's not directory... Create a directory named as the episode but without the extension of the video
                         episode_folder=$(echo $resul | cat -d '.' -f1) # Delete the extension of the video file
@@ -49,7 +49,7 @@ echo $(date +"%d/%m/%Y - %H:%M") "Script starts.." >> $downloadsPath/shows_log.t
 while read show ; do
         claveShow=$(echo $show | tr " " .)
         echo $claveShow
-        if [ !-d $destinoPath/$show ]; then 
+        if [ ! -d $destinoPath/$show ]; then 
                 mkdir $destinoPath/$show #Crear directorio destino de la serie si este no existe
         fi
         echo "Searching episodes for $show ...."
@@ -61,7 +61,7 @@ while read show ; do
                 1) echo "There's 1 episode for $show"
 
                         resul=$(ls $downloadsPath | grep "$claveShow")
-                        moveEpisode resul
+                        moveEpisode $resul
 
                         echo $(date +"%d/%m/%Y - %H:%M") " ->> Episode $episode_folder moved succesfully" >> $downloadsPath/shows_log.txt
                         ;;
@@ -71,7 +71,7 @@ while read show ; do
                         resul_list=$(ls $downloadsPath | grep "$claveShow")
 
                         for resul in resul_list; do
-                                moveEpisode resul
+                                moveEpisode $resul
                         done
 
                         echo "Moved $numCaps episodes of $show "
