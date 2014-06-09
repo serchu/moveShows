@@ -68,7 +68,7 @@ while read show ; do
 
                 *) echo "There's $numCaps episodes for $show"
 
-                        $resul_list=$(ls $downloadsPath | grep "$claveShow")
+                        resul_list=$(ls $downloadsPath | grep "$claveShow")
 
                         for resul in resul_list; do
                                 moveEpisode resul
