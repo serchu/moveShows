@@ -47,7 +47,7 @@ echo "****************************************"
 echo $(date +"%d/%m/%Y - %H:%M") "Script starts.." >> $downloadsPath/shows_log.txt
 
 while read show ; do
-        claveAsociada= #TODO: Mirar como hacer para definir la clave de búsqueda
+        claveShow=$(echo show | tr " " .)
         if [ ! -d $destinoPath/$show ]; then 
                 mkdir $destinoPath/$show #Crear directorio destino de la serie si este no existe
         fi
@@ -60,7 +60,6 @@ while read show ; do
                 1) echo "There's 1 episode for $show"
 
                         resul=$(ls $downloadsPath | grep $claveShow)
-
                         moveEpisode resul
 
                         echo $(date +"%d/%m/%Y - %H:%M") " ->> Episode $episode_folder moved succesfully" >> $downloadsPath/shows_log.txt
@@ -73,7 +72,7 @@ while read show ; do
                         for resul in resul_list; do
                                 moveEpisode resul
                         done
-                        
+
                         echo "Moved $numCaps episodes of $show "
                         echo $(date +"%d/%m/%Y - %H:%M") " ->> $numCaps episodes of $show moved succesfully" >> $downloadsPath/shows_log.txt
                         ;;
