@@ -48,18 +48,19 @@ echo $(date +"%d/%m/%Y - %H:%M") "Script starts.." >> $downloadsPath/shows_log.t
 
 while read show ; do
         claveShow=$(echo show | tr " " .)
+        echo $claveShow
         if [ ! -d $destinoPath/$show ]; then 
                 mkdir $destinoPath/$show #Crear directorio destino de la serie si este no existe
         fi
         echo "Searching episodes for $show ...."
-        numCaps=$(ls $downloadsPath | grep $claveShow | wc -l)
+        numCaps=$(ls $downloadsPath | grep "$claveShow" | wc -l)
         echo $numCaps
         case $numCaps in
                 0) echo "There's no episodes for $show" ;;
 
                 1) echo "There's 1 episode for $show"
 
-                        resul=$(ls $downloadsPath | grep $claveShow)
+                        resul=$(ls $downloadsPath | grep "$claveShow")
                         moveEpisode resul
 
                         echo $(date +"%d/%m/%Y - %H:%M") " ->> Episode $episode_folder moved succesfully" >> $downloadsPath/shows_log.txt
@@ -67,7 +68,7 @@ while read show ; do
 
                 *) echo "There's $numCaps episodes for $show"
 
-                        $resul_list=$(ls $downloadsPath | grep $claveShow)
+                        $resul_list=$(ls $downloadsPath | grep "$claveShow")
 
                         for resul in resul_list; do
                                 moveEpisode resul
