@@ -70,7 +70,7 @@ while read show ; do
 
                         resul_list=$(ls $downloadsPath | grep "$claveShow")
 
-                        for resul in resul_list; do
+                        for resul in $resul_list; do
                                 moveEpisode $resul
                         done
 
